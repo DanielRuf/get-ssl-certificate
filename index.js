@@ -25,14 +25,15 @@ function pemEncode(str, n) {
   return returnString;
 }
 
-function getOptions(url, port, protocol) {
+function getOptions(url, port, protocol, timeout) {
   return {
     hostname: url,
     agent: false,
     rejectUnauthorized: false,
     ciphers: 'ALL',
     port,
-    protocol
+    protocol,
+    timeout
   };
 }
 
@@ -63,13 +64,13 @@ function get(url, timeout, port, protocol, detailed) {
   port = port || 443;
   protocol = protocol || 'https:';
 
-  const options = getOptions(url, port, protocol);
+  const options = getOptions(url, port, protocol, timeout);
 
   return new Promise(function(resolve, reject) {
     var req = handleRequest(options, detailed, resolve, reject);
 
     if (timeout) {
-      req.setTimeout(timeout, function() {
+      req.on('timeout', () => {
         reject({ message: 'Request timed out.' });
         req.abort();
       });
