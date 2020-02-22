@@ -1,4 +1,4 @@
-var fs = require('fs');
+const fs = require('fs');
 
 require.extensions['.txt'] = function(module, filename) {
   module.exports = fs.readFileSync(filename, 'utf8');
@@ -14,6 +14,7 @@ var should = require('chai').should(),
   stub = require('sinon').stub,
   https = require('https'),
   mockPemEncodedCert = require('./mocks/mock.pem'),
+  mockIssuerCertificateFingerprint = '33:E4:E8:08:07:20:4C:2B:61:82:A3:A1:4B:59:1A:CD:25:B5:F0:DB',
   mockBase64EncodedRawBuffer = require('./mocks/base64buffer.txt'),
   getSSLCertificate = require('../index');
 
@@ -22,23 +23,7 @@ describe('Mock getSSLCertificate.get()', function() {
 
   var bufferFromBase64String = new Buffer.from(mockBase64EncodedRawBuffer, 'base64');
 
-  var mockCertificate = {
-    subject: {
-      OU: ['Domain Control Validated', 'PositiveSSL Wildcard'],
-      CN: '*.nodejs.org'
-    },
-    issuer: {
-      C: 'GB',
-      ST: 'Greater Manchester',
-      L: 'Salford',
-      O: 'COMODO CA Limited',
-      CN: 'COMODO RSA Domain Validation Secure Server CA'
-    },
-    valid_from: 'Nov  8 00:00:00 2015 GMT',
-    valid_to: 'Aug 22 23:59:59 2017 GMT',
-    raw: bufferFromBase64String
-  };
-
+  var mockCertificate = require('./mocks/cert.js');
   var mockSuccessResult = {
     socket: {
       getPeerCertificate: function() {
@@ -67,7 +52,6 @@ describe('Mock getSSLCertificate.get()', function() {
     mockSuccessResult,
     mockSuccessResult,
     mockSuccessResult,
-    mockFailResult
   ];
 
   beforeEach(function() {
@@ -145,17 +129,38 @@ describe('Live getSSLCertificate.get()', function() {
         done();
       });
   });
-});
 
-it('should timeout at expected time', function(done) {
-  const startTime = new Date();
-  getSSLCertificate
-    .get('192.0.2.0', 1400) // use a TEST-NET-1 IP address
-    .catch(function(error) {
-      const endTime = new Date();
-      expect(error.message).to.be.equal('Request timed out.');
-      expect(endTime - startTime).to.be.above(1400);
-      expect(endTime - startTime).to.be.below(1600);
+  it('should timeout at expected time', function(done) {
+    const startTime = new Date();
+    getSSLCertificate
+      .get('192.0.2.0', 1400) // use a TEST-NET-1 IP address
+      .catch(function(error) {
+        const endTime = new Date();
+        expect(error.message).to.be.equal('Request timed out.');
+        expect(endTime - startTime).to.be.above(1400);
+        expect(endTime - startTime).to.be.below(1600);
+        done();
+      });
+  });
+
+  it('the certificate should return the certificate chain when detailed = true', function(done) {
+    getSSLCertificate.get('nodejs.org', null, null, null, true).then(function(cert) {
+      expect(cert.issuerCertificate.fingerprint).to.be.equal(mockIssuerCertificateFingerprint);
       done();
     });
+  });
+
+  it('the certificate should not return the certificate chain when detailed = false', function(done) {
+    getSSLCertificate.get('nodejs.org', null, null, null, false).then(function(cert) {
+      expect(cert.issuerCertificate).to.be.undefined;
+      done();
+    });
+  });
+
+  it('the certificate should not return the certificate chain when detailed = undefined', function(done) {
+    getSSLCertificate.get('nodejs.org').then(function(cert) {
+      expect(cert.issuerCertificate).to.be.undefined;
+      done();
+    });
+  });
 });
