@@ -146,3 +146,16 @@ describe('Live getSSLCertificate.get()', function() {
       });
   });
 });
+
+it('should timeout at expected time', function(done) {
+  const startTime = new Date();
+  getSSLCertificate
+    .get('192.0.2.0', 1400) // use a TEST-NET-1 IP address
+    .catch(function(error) {
+      const endTime = new Date();
+      expect(error.message).to.be.equal('Request timed out.');
+      expect(endTime - startTime).to.be.above(1400);
+      expect(endTime - startTime).to.be.below(1600);
+      done();
+    });
+});
