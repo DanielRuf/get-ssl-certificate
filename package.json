@@ -4,9 +4,9 @@
   "description": "A micro-library that returns a website's SSL certificate",
   "main": "index.js",
   "scripts": {
-    "test": "nyc ./node_modules/.bin/mocha --reporter spec",
+    "test": "nyc mocha --reporter spec",
     "coverage": "nyc report --reporter=text-lcov | coveralls",
-    "coveralls": "cat ./coverage/lcov.info | node ./node_modules/coveralls/bin/coveralls.js"
+    "coveralls": "cat ./coverage/lcov.info | coveralls"
   },
   "repository": {
     "type": "git",
