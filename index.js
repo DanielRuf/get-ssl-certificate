@@ -43,7 +43,13 @@ function validateHostname(hostname) {
   }
 }
 
-function handleRequest(options, detailed = false, resolve, reject) {
+function handleRequest(options, detailed, resolve, reject) {
+  if (typeof detailed !== 'undefined') {
+    detailed = !!detailed;
+  }
+  if (typeof detailed === 'undefined') {
+    detailed = false;
+  }
   return https.get(options, function(res) {
     let certificate = res.socket.getPeerCertificate(detailed);
 
