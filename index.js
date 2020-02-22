@@ -33,7 +33,7 @@ function getOptions(hostname, port, protocol, timeout) {
     ciphers: 'ALL',
     port,
     protocol,
-    timeout
+    timeout: timeout || 0
   };
 }
 
