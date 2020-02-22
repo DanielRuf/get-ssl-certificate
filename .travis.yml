@@ -5,6 +5,7 @@ node_js:
   - "10"
   - "8"
 cache: yarn
-before_script: npm run test
-script: npm run coverage
-after_success: 'npm run coveralls'
+install: yarn
+before_script: yarn test
+script: yarn coverage
+after_success: yarn coveralls
