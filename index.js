@@ -1,7 +1,7 @@
-var https = require('https');
+const https = require('https');
 
 function isEmpty(object) {
-  for (var prop in object) {
+  for (let prop in object) {
     if (object.hasOwnProperty(prop)) return false;
   }
 
@@ -9,18 +9,18 @@ function isEmpty(object) {
 }
 
 function pemEncode(str, n) {
-  var ret = [];
+  const ret = [];
 
-  for (var i = 1; i <= str.length; i++) {
+  for (let i = 1; i <= str.length; i++) {
     ret.push(str[i - 1]);
-    var mod = i % n;
+    let mod = i % n;
 
     if (mod === 0) {
       ret.push('\n');
     }
   }
 
-  var returnString = `-----BEGIN CERTIFICATE-----\n${ret.join('')}\n-----END CERTIFICATE-----`;
+  const returnString = `-----BEGIN CERTIFICATE-----\n${ret.join('')}\n-----END CERTIFICATE-----`;
 
   return returnString;
 }
@@ -44,7 +44,7 @@ function validateUrl(url) {
 
 function handleRequest(options, detailed = false, resolve, reject) {
   return https.get(options, function(res) {
-    var certificate = res.socket.getPeerCertificate(detailed);
+    let certificate = res.socket.getPeerCertificate(detailed);
 
     if (isEmpty(certificate) || certificate === null) {
       reject({ message: 'The website did not provide a certificate' });
@@ -63,7 +63,7 @@ function get(url, timeout, port, protocol, detailed) {
   port = port || 443;
   protocol = protocol || 'https:';
 
-  var options = getOptions(url, port, protocol);
+  const options = getOptions(url, port, protocol);
 
   return new Promise(function(resolve, reject) {
     var req = handleRequest(options, detailed, resolve, reject);
