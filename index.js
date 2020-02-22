@@ -25,9 +25,9 @@ function pemEncode(str, n) {
   return returnString;
 }
 
-function getOptions(url, port, protocol, timeout) {
+function getOptions(hostname, port, protocol, timeout) {
   return {
-    hostname: url,
+    hostname,
     agent: false,
     rejectUnauthorized: false,
     ciphers: 'ALL',
@@ -37,9 +37,9 @@ function getOptions(url, port, protocol, timeout) {
   };
 }
 
-function validateUrl(url) {
-  if (url.length <= 0 || typeof url !== 'string') {
-    throw Error('A valid URL is required');
+function validateHostname(hostname) {
+  if (hostname.length <= 0 || typeof hostname !== 'string') {
+    throw Error('A valid hostname is required');
   }
 }
 
@@ -58,13 +58,13 @@ function handleRequest(options, detailed = false, resolve, reject) {
   });
 }
 
-function get(url, timeout, port, protocol, detailed) {
-  validateUrl(url);
+function get(hostname, timeout, port, protocol, detailed) {
+  validateHostname(hostname);
 
   port = port || 443;
   protocol = protocol || 'https:';
 
-  const options = getOptions(url, port, protocol, timeout);
+  const options = getOptions(hostname, port, protocol, timeout);
 
   return new Promise(function(resolve, reject) {
     var req = handleRequest(options, detailed, resolve, reject);
