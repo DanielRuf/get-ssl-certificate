@@ -2,9 +2,9 @@
 
 ## A zero-dependency utility that returns a website's SSL certificate
 
-![CI](https://github.com/DanielRuf/get-ssl-certificate/workflows/CI/badge.svg)
-[![Coverage Status](https://coveralls.io/repos/github/DanielRuf/get-ssl-certificate/badge.svg?branch=master)](https://coveralls.io/github/DanielRuf/get-ssl-certificate?branch=master)
-[![Code Climate](https://codeclimate.com/github/DanielRuf/get-ssl-certificate/badges/gpa.svg)](https://codeclimate.com/github/DanielRuf/get-ssl-certificate)
+![CI](https://github.com/DanielRuf/get-ssl-certificate-next/workflows/CI/badge.svg)
+[![Coverage Status](https://coveralls.io/repos/github/DanielRuf/get-ssl-certificate-next/badge.svg?branch=master)](https://coveralls.io/github/DanielRuf/get-ssl-certificate-next?branch=master)
+[![Code Climate](https://codeclimate.com/github/DanielRuf/get-ssl-certificate-next/badges/gpa.svg)](https://codeclimate.com/github/DanielRuf/get-ssl-certificate-next)
 [![NPM version](https://img.shields.io/npm/v/get-ssl-certificate-next.svg)](https://www.npmjs.com/package/get-ssl-certificate-next)
 
 ### Installation
