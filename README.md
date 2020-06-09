@@ -2,10 +2,10 @@
 
 ## A zero-dependency utility that returns a website's SSL certificate
 
-[![Build Status](https://travis-ci.org/johncrisostomo/get-ssl-certificate.svg?branch=master)](https://travis-ci.org/johncrisostomo/get-ssl-certificate)
-[![Coverage Status](https://coveralls.io/repos/github/johncrisostomo/get-ssl-certificate/badge.svg?branch=master)](https://coveralls.io/github/johncrisostomo/get-ssl-certificate?branch=master)
-[![Code Climate](https://codeclimate.com/github/johncrisostomo/get-ssl-certificate/badges/gpa.svg)](https://codeclimate.com/github/johncrisostomo/get-ssl-certificate)
-[![npm](https://img.shields.io/badge/npm-v2.3.3-blue.svg)](https://www.npmjs.com/package/get-ssl-certificate)
+![CI](https://github.com/DanielRuf/get-ssl-certificate/workflows/CI/badge.svg)
+[![Coverage Status](https://coveralls.io/repos/github/DanielRuf/get-ssl-certificate/badge.svg?branch=master)](https://coveralls.io/github/DanielRuf/get-ssl-certificate?branch=master)
+[![Code Climate](https://codeclimate.com/github/DanielRuf/get-ssl-certificate/badges/gpa.svg)](https://codeclimate.com/github/DanielRuf/get-ssl-certificate)
+[![NPM version](https://img.shields.io/npm/v/get-ssl-certificate-next.svg)](https://www.npmjs.com/package/get-ssl-certificate-next)
 
 ### Installation
 
