@@ -1,5 +1,5 @@
 {
-  "name": "get-ssl-certificate",
+  "name": "get-ssl-certificate-next",
   "version": "2.3.3",
   "description": "A micro-library that returns a website's SSL certificate",
   "main": "index.js",
@@ -18,7 +18,12 @@
     "https",
     "socket"
   ],
-  "author": "John Crisostomo",
+  "author": "Daniel Ruf <mac1@daniel-ruf.de>",
+  "contributors": [
+    {
+      "name": "John Crisostomo"
+    }
+  ],
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/johncrisostomo/get-ssl-certificate/issues"
