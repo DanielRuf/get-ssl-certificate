@@ -42,3 +42,6 @@ coverage
 # OS specific temp files
 .DS_Store
 Thumbs.db
+
+# SonarQube folders
+.scannerwork
