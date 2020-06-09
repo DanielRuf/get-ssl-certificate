@@ -1,6 +1,6 @@
 {
   "name": "get-ssl-certificate-next",
-  "version": "2.3.3",
+  "version": "3.0.0",
   "description": "A micro-library that returns a website's SSL certificate",
   "main": "index.js",
   "scripts": {
