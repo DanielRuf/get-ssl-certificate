@@ -9,7 +9,7 @@
 
 ### Installation
 
-```
+```shell
 npm install --save get-ssl-certificate
 ```
 
@@ -17,13 +17,13 @@ npm install --save get-ssl-certificate
 
 #### Import package:
 
-```
+```js
 const sslCertificate = require('get-ssl-certificate')
 ```
 
 #### Pass a url / domain name:
 
-```
+```js
 sslCertificate.get('nodejs.org').then(function (certificate) {
   console.log(certificate)
   // certificate is a JavaScript object
@@ -51,7 +51,7 @@ sslCertificate.get('nodejs.org').then(function (certificate) {
 
 #### Optional parameters: Timeout (in ms), Protocol (Default is 'https:') and Port (Default is 443)
 
-```
+```js
 sslCertificate.get('nodejs.org', 250, 443, 'https:').then(function (certificate) {
   console.log(certificate)
   // certificate is a JavaScript object
