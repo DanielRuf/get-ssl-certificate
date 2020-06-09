@@ -10,7 +10,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/johncrisostomo/get-ssl-certificate.git"
+    "url": "git+https://github.com/DanielRuf/get-ssl-certificate.git"
   },
   "keywords": [
     "ssl",
@@ -26,9 +26,9 @@
   ],
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/johncrisostomo/get-ssl-certificate/issues"
+    "url": "https://github.com/DanielRuf/get-ssl-certificate/issues"
   },
-  "homepage": "https://github.com/johncrisostomo/get-ssl-certificate#readme",
+  "homepage": "https://github.com/DanielRuf/get-ssl-certificate#readme",
   "devDependencies": {
     "chai": "4.2.0",
     "coveralls": "3.0.9",
