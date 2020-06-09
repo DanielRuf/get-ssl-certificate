@@ -1,4 +1,4 @@
-# get-ssl-certificate
+# get-ssl-certificate-next
 
 ## A zero-dependency utility that returns a website's SSL certificate
 
@@ -10,7 +10,7 @@
 ### Installation
 
 ```shell
-npm install --save get-ssl-certificate
+npm install --save get-ssl-certificate-next
 ```
 
 ### Usage
@@ -18,7 +18,7 @@ npm install --save get-ssl-certificate
 #### Import package:
 
 ```js
-const sslCertificate = require('get-ssl-certificate')
+const sslCertificate = require('get-ssl-certificate-next')
 ```
 
 #### Pass a url / domain name:
