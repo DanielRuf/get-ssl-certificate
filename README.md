@@ -49,10 +49,10 @@ sslCertificate.get('nodejs.org').then(function (certificate) {
 });
 ```
 
-#### Optional parameters: Timeout (in ms), Protocol (Default is 'https:') and Port (Default is 443)
+#### Optional parameters: Timeout (in ms), Protocol (Default is 'https:'), Port (Default is 443) and detailed (includes certificate chain, Default is false)
 
 ```js
-sslCertificate.get('nodejs.org', 250, 443, 'https:').then(function (certificate) {
+sslCertificate.get('nodejs.org', 250, 443, 'https:', false).then(function (certificate) {
   console.log(certificate)
   // certificate is a JavaScript object
 
